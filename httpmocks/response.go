@@ -36,12 +36,14 @@ func (mock *ReadCloserMock) Close() error {
 	return nil
 }
 
-// NewReadCloserMock construct a new ReadCloserMock.
-func NewReadCloserMock(getEntityFunc func() ([]byte, error)) *ReadCloserMock {
+// NewReadCloserMock construct a new ReadCloserMock b & err are the values to return when body.Read is called.
+func NewReadCloserMock(b []byte, err error) *ReadCloserMock {
 	return &ReadCloserMock{
-		GetEntityFunc: getEntityFunc,
-		done:          false,
-		IsClosed:      false,
+		done:     false,
+		IsClosed: false,
+		GetEntityFunc: func() ([]byte, error) {
+			return b, err
+		},
 	}
 }
 
