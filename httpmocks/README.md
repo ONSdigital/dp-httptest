@@ -2,7 +2,7 @@
 
 ## HTTP Response Body Mock
 
-Creating a mock io.ReadCloser for a response body:
+Creating a mock `io.ReadCloser` for a response body:
 ````go
     s := []string{"1", "2", "3"}
     b, err := json.Marshal(s)
@@ -11,7 +11,7 @@ Creating a mock io.ReadCloser for a response body:
 ````
 
 ### HTTP Response Mock
-Creating a successful http.Response with status code 200 with the desired a body:
+Creating a successful `http.Response` with status code 200 with the desired body:
 ```go
     s := []string{"1", "2", "3"}
     b, err := json.Marshal(s))
