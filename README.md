@@ -1,3 +1,5 @@
-# dp-httptest
+# dp-mocking
 
-Common mocking/unit testing utils for dp Golang apps.
+Mocking and unit testing utils for dp Golang apps.
+
+ - [http mocks](/httpmocks)
