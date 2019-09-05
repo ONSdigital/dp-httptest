@@ -24,3 +24,5 @@ Creating an unsuccessful response:
 ```go
     resp := httpmocks.NewResponseMock(nil, 500)
 ```
+
+See [here](/httpmocks/httpmocks_test.go) for full code examples
