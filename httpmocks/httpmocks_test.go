@@ -30,6 +30,7 @@ func (p person) String() string {
 	return fmt.Sprintf("[name=%s, age=%d, Catchphrases=%s]", p.Name, p.Age, p.CatchPhrases)
 }
 
+// ExampleNewReadCloserMock how to create a ReadCloserMock that returns the expected bytes and error
 func ExampleNewReadCloserMock() {
 	b, err := json.Marshal(rickSanchez)
 	if err != nil {
@@ -55,6 +56,7 @@ func ExampleNewReadCloserMock() {
 	// [name=Rick Sanchez, age=70, Catchphrases=[IM PICKLE RICK! Wubba lubba dub dub!]]
 }
 
+// ExampleNewResponseMock how to create a mocked http.Response that contains a body and a 200 status code
 func ExampleNewResponseMock() {
 	b, err := json.Marshal(mortySmith)
 	if err != nil {
