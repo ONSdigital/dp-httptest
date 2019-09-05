@@ -11,9 +11,9 @@ import (
 
 // ReadCloserMock is a mock implementation of io.ReadCloser
 type ReadCloserMock struct {
-	GetEntityFunc func() ([]byte, error)
-	done          bool
-	IsClosed      bool
+	DoReadFunc func() ([]byte, error)
+	done       bool
+	IsClosed   bool
 }
 
 // Fulfill the io.Reader interface.
@@ -22,7 +22,7 @@ func (mock *ReadCloserMock) Read(p []byte) (n int, err error) {
 		return 0, io.EOF
 	}
 
-	b, err := mock.GetEntityFunc()
+	b, err := mock.DoReadFunc()
 	if err != nil {
 		return 0, err
 	}
@@ -45,7 +45,7 @@ func NewReadCloserMock(b []byte, err error) *ReadCloserMock {
 	return &ReadCloserMock{
 		done:     false,
 		IsClosed: false,
-		GetEntityFunc: func() ([]byte, error) {
+		DoReadFunc: func() ([]byte, error) {
 			return b, err
 		},
 	}
