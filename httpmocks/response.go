@@ -1,8 +1,12 @@
 package httpmocks
 
 import (
+	"encoding/json"
 	"io"
 	"net/http"
+	"testing"
+
+	"github.com/ONSdigital/log.go/log"
 )
 
 // ReadCloserMock is a mock implementation of io.ReadCloser
@@ -53,4 +57,14 @@ func NewResponseMock(body *ReadCloserMock, status int) *http.Response {
 		StatusCode: status,
 		Body:       body,
 	}
+}
+
+// GetEntityBytes json marshall the value and return the produced []byte. Invokes t.FailNow() if there is an error while marshalling the value.
+func GetEntityBytes(t *testing.T, i interface{}) []byte {
+	body, err := json.Marshal(i)
+	if err != nil {
+		log.Event(nil, "failed to json marshal value", log.Error(err))
+		t.FailNow()
+	}
+	return body
 }
