@@ -1,0 +1,16 @@
+---
+
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: golang
+    tag: latest
+
+inputs:
+  - name: dp-mocking
+    path: dp-mocking
+
+run:
+  path: dp-mocking/ci/scripts/unit.sh
