@@ -3,7 +3,7 @@ package httpmocks
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 )
 
 var (
@@ -39,7 +39,7 @@ func ExampleNewReadCloserMock() {
 
 	readCloser := NewReadCloserMock(b, nil)
 
-	bOut, err := ioutil.ReadAll(readCloser)
+	bOut, err := io.ReadAll(readCloser)
 	if err != nil {
 		panic(err)
 	}
@@ -68,7 +68,7 @@ func ExampleNewResponseMock() {
 
 	defer body.Close()
 
-	bout, err := ioutil.ReadAll(resp.Body)
+	bout, err := io.ReadAll(resp.Body)
 	if err != nil {
 		panic(err)
 	}
