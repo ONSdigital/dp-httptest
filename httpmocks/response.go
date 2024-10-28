@@ -28,9 +28,8 @@ func (mock *ReadCloserMock) Read(p []byte) (n int, err error) {
 		return 0, err
 	}
 
-	for i, b := range b {
-		p[i] = b
-	}
+	copy(p, b)
+
 	mock.done = true
 	return len(b), nil
 }

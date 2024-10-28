@@ -13,5 +13,5 @@ build:
 .PHONY: build
 
 lint:
-	golangci-lint --deadline=10m --fast --enable=gosec --enable=gocritic --enable=gofmt --enable=gocyclo --enable=bodyclose --enable=gocognit run
+	golangci-lint run ./...
 .PHONY: lint
